@@ -50,6 +50,16 @@ class Game
 
 
 
+  def player_won?
+    @pegs == [[], [], [@ring3, @ring2, @ring1]]
+  end
+
+  def render_win_message
+    puts "Congratulations! You won!"
+  end
+
+
+
 end
 
 game = Game.new(3)
