@@ -48,7 +48,40 @@ class Game
     puts ""
   end
 
+  def build_rings
+    rings = []
+    (1..@initial_height).to_a.each do |ring_width|
+      rings << ("0" * ring_width)
+    end
+  end
 
+  def render_disc(location)
+    if location
+      location.center(@line_width/3)
+    else
+      @space.center(@line_width/3)
+    end
+  end
+
+  def display_board(moves = [])
+    if moves
+      from = moves[0].to_i
+      to = moves[1].to_i
+      @pegs[to -1] << @pegs[from -1].pop
+      @pegs = @pegs.map(&:compact)
+    end
+    puts ""
+    puts ""
+    puts ""
+    puts ""
+    puts "Your Current Board:"
+    puts ""
+    puts render_disc(@pegs[0][2]) + render_disc(@pegs[1][2]) + render_disc(@pegs[2][2])
+    puts render_disc(@pegs[0][1]) + render_disc(@pegs[1][1]) + render_disc(@pegs[2][1])
+    puts render_disc(@pegs[0][0]) + render_disc(@pegs[1][0]) + render_disc(@pegs[2][0])
+    puts '-' * @line_width
+    puts '1'.center(@line_width/3) + '2'.center(@line_width/3) + '3'.center(@line_width/3)
+  end
 
   def player_won?
     @pegs == [[], [], [@ring3, @ring2, @ring1]]
@@ -57,7 +90,6 @@ class Game
   def render_win_message
     puts "Congratulations! You won!"
   end
-
 
 
 end
