@@ -9,6 +9,18 @@ class Game
     @pegs = [[@ring3, @ring2, @ring1], [], []]
   end
 
+  def play
+    welcome_player
+    build_rings
+    display_board
+
+    until player_won?
+      display_board(request_moves)
+    end
+
+    render_win_message
+  end
+
 end
 
 game = Game.new(3)
