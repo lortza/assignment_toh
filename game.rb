@@ -63,6 +63,19 @@ class Game
     end
   end
 
+  def request_moves
+    moves = []
+    puts "Select the peg of the disc you want to move:    Enter 'q' to quit."
+    input = gets.chomp
+    exit_game if input.downcase == 'q'
+    moves << input
+    puts "Select the destination peg. (Must be empty or contain a larger disc):    Enter 'q' to quit."
+    input = gets.chomp
+    exit_game if input.downcase == 'q'
+    moves << input
+    moves
+  end
+
   def display_board(moves = [])
     if moves
       from = moves[0].to_i
@@ -91,6 +104,10 @@ class Game
     puts "Congratulations! You won!"
   end
 
+  def exit_game
+    puts "Good bye."
+    exit
+  end
 
 end
 
