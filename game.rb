@@ -24,9 +24,9 @@ class Game
   def welcome_player
     puts AsciiArt::TITLE
     continue_or_quit
-    puts "----------------------------------------------"
+    puts "-" * 46
     puts "INSTRUCTIONS:"
-    puts "----------------------------------------------"
+    puts "-" * 46
     puts "Moving each disc one at a time, move the stack"
     puts "of discs from the peg on the left (1) to the"
     puts "peg on the right (3).", ""
@@ -38,7 +38,7 @@ class Game
     puts render_disc(SPACE) + render_disc(SPACE) + render_disc(RING3)
     puts '-' * LINE_WIDTH
     puts '1'.center(LINE_WIDTH/3) + '2'.center(LINE_WIDTH/3) + '3'.center(LINE_WIDTH/3)
-    puts "", "================================================", ""
+    puts "", "=" * 46, ""
     continue_or_quit
   end
 
