@@ -47,6 +47,7 @@ class Game
     puts "Enter 'q' to quit at any time."
     response = gets.chomp
     exit_game if response == 'q'
+    clear_screen
   end
 
   def render_disc(location)
@@ -71,13 +72,13 @@ class Game
   end
 
   def display_board(moves = [])
+    clear_screen
     if moves
       from_index = (moves[0].to_i) -1
       to_index = (moves[1].to_i) -1
       @pegs[to_index] << @pegs[from_index].pop
       @pegs = @pegs.map(&:compact)
     end
-    puts "", "", ""
     puts "Your Current Board:", ""
     puts render_disc(@pegs[0][2]) + render_disc(@pegs[1][2]) + render_disc(@pegs[2][2])
     puts render_disc(@pegs[0][1]) + render_disc(@pegs[1][1]) + render_disc(@pegs[2][1])
@@ -91,14 +92,20 @@ class Game
   end
 
   def render_win_message
-    puts AsciiArt::WIN
+    clear_screen
     puts "Congratulations! You won!"
+    puts AsciiArt::WIN
   end
 
   def exit_game
+    clear_screen
     puts AsciiArt::CAT
     puts "kthxbai."
     exit
+  end
+
+  def clear_screen
+    system "clear"
   end
 
 end
