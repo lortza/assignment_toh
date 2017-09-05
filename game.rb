@@ -23,6 +23,7 @@ class Game
 
   def welcome_player
     puts AsciiArt::TITLE
+    continue_or_quit
     puts "----------------------------------------------"
     puts "INSTRUCTIONS:"
     puts "----------------------------------------------"
@@ -37,8 +38,15 @@ class Game
     puts render_disc(SPACE) + render_disc(SPACE) + render_disc(RING3)
     puts '-' * LINE_WIDTH
     puts '1'.center(LINE_WIDTH/3) + '2'.center(LINE_WIDTH/3) + '3'.center(LINE_WIDTH/3)
-    puts "", "Enter 'q' to quit at any time.", ""
-    puts "================================================", ""
+    puts "", "================================================", ""
+    continue_or_quit
+  end
+
+  def continue_or_quit
+    puts "Hit the 'Enter' key to continue."
+    puts "Enter 'q' to quit at any time."
+    response = gets.chomp
+    exit if response == 'q'
   end
 
   def render_disc(location)
