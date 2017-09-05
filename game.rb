@@ -1,8 +1,8 @@
 load 'ascii_art.rb'
 
 class Game
-  def initialize(initial_height)
-    @initial_height = initial_height
+  def initialize(qty_rings)
+    @qty_rings = qty_rings
     @pegs = [[RING3, RING2, RING1], [], []]
   end
 
