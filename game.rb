@@ -1,12 +1,7 @@
 class Game
   def initialize(initial_height)
     @initial_height = initial_height
-    @line_width = 21
-    @space = '  |  '
-    @ring1 = '  0  '
-    @ring2 = ' 000 '
-    @ring3 = '00000'
-    @pegs = [[@ring3, @ring2, @ring1], [], []]
+    @pegs = [[RING3, RING2, RING1], [], []]
   end
 
   def play
@@ -23,6 +18,12 @@ class Game
 
   private
 
+  LINE_WIDTH = 21
+  SPACE = '  |  '
+  RING1 = '  0  '
+  RING2 = ' 000 '
+  RING3 = '00000'
+
   def welcome_player
     puts "--------------------------"
     puts "Welcome to Tower of Hanoi!"
@@ -36,11 +37,11 @@ class Game
     puts ""
     puts "Your finished board should look like this:"
     puts ""
-    puts render_disc(@space) + render_disc(@space) + render_disc(@ring1)
-    puts render_disc(@space) + render_disc(@space) + render_disc(@ring2)
-    puts render_disc(@space) + render_disc(@space) + render_disc(@ring3)
-    puts '-' * @line_width
-    puts '1'.center(@line_width/3) + '2'.center(@line_width/3) + '3'.center(@line_width/3)
+    puts render_disc(SPACE) + render_disc(SPACE) + render_disc(RING1)
+    puts render_disc(SPACE) + render_disc(SPACE) + render_disc(RING2)
+    puts render_disc(SPACE) + render_disc(SPACE) + render_disc(RING3)
+    puts '-' * LINE_WIDTH
+    puts '1'.center(LINE_WIDTH/3) + '2'.center(LINE_WIDTH/3) + '3'.center(LINE_WIDTH/3)
     puts ""
     puts "Enter 'q' to quit at any time."
     puts ""
@@ -57,9 +58,9 @@ class Game
 
   def render_disc(location)
     if location
-      location.center(@line_width/3)
+      location.center(LINE_WIDTH/3)
     else
-      @space.center(@line_width/3)
+      SPACE.center(LINE_WIDTH/3)
     end
   end
 
@@ -92,12 +93,12 @@ class Game
     puts render_disc(@pegs[0][2]) + render_disc(@pegs[1][2]) + render_disc(@pegs[2][2])
     puts render_disc(@pegs[0][1]) + render_disc(@pegs[1][1]) + render_disc(@pegs[2][1])
     puts render_disc(@pegs[0][0]) + render_disc(@pegs[1][0]) + render_disc(@pegs[2][0])
-    puts '-' * @line_width
-    puts '1'.center(@line_width/3) + '2'.center(@line_width/3) + '3'.center(@line_width/3)
+    puts '-' * LINE_WIDTH
+    puts '1'.center(LINE_WIDTH/3) + '2'.center(LINE_WIDTH/3) + '3'.center(LINE_WIDTH/3)
   end
 
   def player_won?
-    @pegs == [[], [], [@ring3, @ring2, @ring1]]
+    @pegs == [[], [], [RING3, RING2, RING1]]
   end
 
   def render_win_message
