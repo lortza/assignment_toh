@@ -93,7 +93,6 @@ class Game
 
   def render_win_message
     clear_screen
-    puts "Congratulations! You won!"
     puts AsciiArt::WIN
   end
 
