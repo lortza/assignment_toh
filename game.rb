@@ -67,9 +67,9 @@ class Game
 
   def display_board(moves = [])
     if moves
-      from = moves[0].to_i
-      to = moves[1].to_i
-      @pegs[to -1] << @pegs[from -1].pop
+      from_index = (moves[0].to_i) -1
+      to_index = (moves[1].to_i) -1
+      @pegs[to_index] << @pegs[from_index].pop
       @pegs = @pegs.map(&:compact)
     end
     puts ""
