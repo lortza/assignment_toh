@@ -1,3 +1,5 @@
+load 'ascii_art.rb'
+
 class Game
   def initialize(initial_height)
     @initial_height = initial_height
@@ -20,12 +22,13 @@ class Game
   RING3 = '00000'
 
   def welcome_player
-    puts "--------------------------"
-    puts "Welcome to Tower of Hanoi!"
-    puts "--------------------------"
-    puts "Instructions:"
+    puts AsciiArt::TITLE
+    puts "----------------------------------------------"
+    puts "INSTRUCTIONS:"
+    puts "----------------------------------------------"
     puts "Moving each disc one at a time, move the stack"
-    puts "of discs from peg 1 to peg 3.", ""
+    puts "of discs from the peg on the left (1) to the"
+    puts "peg on the right (3).", ""
     puts "Discs can only be placed on an empty peg or on"
     puts "a disc that is larger than itself.", ""
     puts "Your finished board should look like this:", ""
@@ -84,7 +87,8 @@ class Game
   end
 
   def exit_game
-    puts "Good bye."
+    puts AsciiArt::CAT
+    puts "kthxbai."
     exit
   end
 
@@ -92,5 +96,3 @@ end
 
 game = Game.new(3)
 game.play
-
-
