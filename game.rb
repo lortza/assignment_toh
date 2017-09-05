@@ -46,7 +46,7 @@ class Game
     puts "Hit the 'Enter' key to continue."
     puts "Enter 'q' to quit at any time."
     response = gets.chomp
-    exit if response == 'q'
+    exit_game if response == 'q'
   end
 
   def render_disc(location)
@@ -91,6 +91,7 @@ class Game
   end
 
   def render_win_message
+    puts AsciiArt::WIN
     puts "Congratulations! You won!"
   end
 
