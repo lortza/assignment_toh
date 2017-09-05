@@ -6,13 +6,8 @@ class Game
 
   def play
     welcome_player
-    build_rings
     display_board
-
-    until player_won?
-      display_board(request_moves)
-    end
-
+    display_board(request_moves) until player_won?
     render_win_message
   end
 
@@ -47,13 +42,6 @@ class Game
     puts ""
     puts "================================================"
     puts ""
-  end
-
-  def build_rings
-    rings = []
-    (1..@initial_height).to_a.each do |ring_width|
-      rings << ("0" * ring_width)
-    end
   end
 
   def render_disc(location)
