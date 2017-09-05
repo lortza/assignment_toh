@@ -1,4 +1,4 @@
-load 'ascii_art.rb'
+require './ascii_art'
 
 class Game
   def initialize(qty_rings)
