@@ -25,23 +25,17 @@ class Game
     puts "--------------------------"
     puts "Instructions:"
     puts "Moving each disc one at a time, move the stack"
-    puts "of discs from peg 1 to peg 3."
-    puts ""
+    puts "of discs from peg 1 to peg 3.", ""
     puts "Discs can only be placed on an empty peg or on"
-    puts "a disc that is larger than itself."
-    puts ""
-    puts "Your finished board should look like this:"
-    puts ""
+    puts "a disc that is larger than itself.", ""
+    puts "Your finished board should look like this:", ""
     puts render_disc(SPACE) + render_disc(SPACE) + render_disc(RING1)
     puts render_disc(SPACE) + render_disc(SPACE) + render_disc(RING2)
     puts render_disc(SPACE) + render_disc(SPACE) + render_disc(RING3)
     puts '-' * LINE_WIDTH
     puts '1'.center(LINE_WIDTH/3) + '2'.center(LINE_WIDTH/3) + '3'.center(LINE_WIDTH/3)
-    puts ""
-    puts "Enter 'q' to quit at any time."
-    puts ""
-    puts "================================================"
-    puts ""
+    puts "", "Enter 'q' to quit at any time.", ""
+    puts "================================================", ""
   end
 
   def render_disc(location)
@@ -54,11 +48,11 @@ class Game
 
   def request_moves
     moves = []
-    puts "Select the peg of the disc you want to move:    Enter 'q' to quit."
+    puts "", "Select the peg of the disc you want to move:    Enter 'q' to quit."
     input = gets.chomp
     exit_game if input.downcase == 'q'
     moves << input
-    puts "Select the destination peg. (Must be empty or contain a larger disc):    Enter 'q' to quit."
+    puts "", "Select the destination peg. (Must be empty or contain a larger disc):    Enter 'q' to quit."
     input = gets.chomp
     exit_game if input.downcase == 'q'
     moves << input
@@ -72,12 +66,8 @@ class Game
       @pegs[to_index] << @pegs[from_index].pop
       @pegs = @pegs.map(&:compact)
     end
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts "Your Current Board:"
-    puts ""
+    puts "", "", ""
+    puts "Your Current Board:", ""
     puts render_disc(@pegs[0][2]) + render_disc(@pegs[1][2]) + render_disc(@pegs[2][2])
     puts render_disc(@pegs[0][1]) + render_disc(@pegs[1][1]) + render_disc(@pegs[2][1])
     puts render_disc(@pegs[0][0]) + render_disc(@pegs[1][0]) + render_disc(@pegs[2][0])
